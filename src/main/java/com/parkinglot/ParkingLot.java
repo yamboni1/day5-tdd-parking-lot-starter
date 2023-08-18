@@ -18,7 +18,7 @@ public class ParkingLot {
 
     public ParkingLot() {
 
-        capacity = 10;
+        capacity = PARKING_LOT_SIZE;
     }
 
     private final Map<ParkingLotTicket, Car> ticketCarMap = new HashMap<>();

@@ -5,7 +5,7 @@ public class Car {
     public void setParkingLotTicket(ParkingLotTicket parkingLotTicket) {
         this.parkingLotTicket = parkingLotTicket;
     }
-    public ParkingLotTicket getParkingLotTicket(){
+    public ParkingLotTicket getParkingLotTicketForCar(){
         return parkingLotTicket;
     }
 }

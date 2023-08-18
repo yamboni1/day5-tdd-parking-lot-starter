@@ -4,15 +4,16 @@ import java.util.HashMap;
 
 
 public class ParkingLot {
-    private HashMap<ParkingLotTicket, Car> carsWithParkingLotTicket = new HashMap<>();
+    private HashMap<ParkingLotTicket, Car> carAndTicketMap = new HashMap<>();
     public ParkingLotTicket park(Car car) {
         ParkingLotTicket parkingLotTicket = new ParkingLotTicket();
-        carsWithParkingLotTicket.put(parkingLotTicket, car);
+        carAndTicketMap.put(parkingLotTicket, car);
         return parkingLotTicket;
     }
 
     public Car fetch(ParkingLotTicket parkingLotTicket) {
-        Car parkedCar = carsWithParkingLotTicket.get(parkingLotTicket);
+        Car parkedCar = carAndTicketMap.get(parkingLotTicket);
+        carAndTicketMap.remove(parkingLotTicket);
         return parkedCar;
 
     }

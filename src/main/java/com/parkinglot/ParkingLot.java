@@ -18,10 +18,4 @@ public class ParkingLot {
     }
 
 
-
-
-
-    public ParkingLotTicket getParkingLotTicketOfCar(ParkingLotTicket parkingLotTicket) {
-        return carsWithParkingLotTicket.get(parkingLotTicket).getParkingLotTicketForCar();
-    }
 }

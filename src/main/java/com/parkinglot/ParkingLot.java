@@ -24,12 +24,16 @@ public class ParkingLot {
     private final Map<ParkingLotTicket, Car> ticketCarMap = new HashMap<>();
 
     public ParkingLotTicket park(Car car) {
-        if (capacity == ticketCarMap.size()) {
+         if (isParkingLotCapacityFull()) {
             throw new NoAvailablePositionException();
         }
         ParkingLotTicket parkingLotTicket = new ParkingLotTicket();
         ticketCarMap.put(parkingLotTicket, car);
         return parkingLotTicket;
+    }
+
+    private boolean isParkingLotCapacityFull() {
+        return capacity == ticketCarMap.size();
     }
 
     public Car fetch(ParkingLotTicket parkingLotTicket) {
@@ -42,4 +46,11 @@ public class ParkingLot {
     }
 
 
+    public int getAvailableCapacity() {
+        return capacity - ticketCarMap.size();
+    }
+
+    public boolean hasAvailableCapacity() {
+        return !isParkingLotCapacityFull();
+    }
 }

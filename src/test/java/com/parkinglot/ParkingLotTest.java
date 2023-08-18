@@ -50,7 +50,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_nothing_when_fetch_the_car_given_parking_lot_and_wrong_parking_ticket() {
+    void should_return_unrecognizedParkingTicketException_when_fetch_the_car_given_parking_lot_and_wrong_parking_ticket() {
         //given
         ParkingLot parkingLot = new ParkingLot();
         ParkingLotTicket parkingLotTicket = new ParkingLotTicket();
@@ -65,7 +65,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_nothing_when_fetch_given_parking_lot_and_used_parkingLot_ticket() {
+    void should_return_unrecognizedParkingTicketException_when_fetch_given_parking_lot_and_used_parkingLot_ticket() {
         //given
         ParkingLot parkingLot = new ParkingLot();
         Car parkedCar = new Car();
@@ -79,7 +79,7 @@ public class ParkingLotTest {
         assertEquals("Unrecognized parking ticket.",unrecognizedParkingTicketException.getMessage());
     }
     @Test
-    void should_return_nothing_when_park_the_car_given_parking_lot_without_any_position() {
+    void should_return_noAvailablePositionException_when_park_the_car_given_parking_lot_without_any_position() {
     //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car newCar = new Car();

@@ -4,37 +4,40 @@ import com.parkinglot.exception.NoAvailablePositionException;
 import com.parkinglot.exception.UnrecognizedParkingTicketException;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class ParkingLot {
     private static final int PARKING_LOT_SIZE = 10;
     private final int capacity;
 
-    public ParkingLot(int capacity){
+    public ParkingLot(int capacity) {
 
         this.capacity = capacity;
     }
-    public ParkingLot(){
+
+    public ParkingLot() {
 
         capacity = 10;
     }
-    private HashMap<ParkingLotTicket, Car> carAndTicketMap = new HashMap<>();
-    public ParkingLotTicket park(Car car) {
-        if(carAndTicketMap.size()== capacity){
-            throw new NoAvailablePositionException();
 
+    private final Map<ParkingLotTicket, Car> ticketCarMap = new HashMap<>();
+
+    public ParkingLotTicket park(Car car) {
+        if (capacity == ticketCarMap.size()) {
+            throw new NoAvailablePositionException();
         }
         ParkingLotTicket parkingLotTicket = new ParkingLotTicket();
-        carAndTicketMap.put(parkingLotTicket, car);
+        ticketCarMap.put(parkingLotTicket, car);
         return parkingLotTicket;
     }
 
     public Car fetch(ParkingLotTicket parkingLotTicket) {
-        if(carAndTicketMap.get(parkingLotTicket) == null){
+        if (ticketCarMap.containsKey(parkingLotTicket)) {
             throw new UnrecognizedParkingTicketException();
         }
 
-        return carAndTicketMap.remove(parkingLotTicket);
+        return ticketCarMap.remove(parkingLotTicket);
 
     }
 

@@ -23,5 +23,23 @@ public class StandardParkingBoyTest {
         assertEquals(9, firstParkingLot.getAvailableCapacity());
         assertEquals(10, secondParkingLot.getAvailableCapacity());
     }
+    @Test
+    void should_park_to_second_parking_lot_when_park_given_is_standard_parking_boy_two_parking_lots_first_parkingLot_is_full_and_a_car() {
+        //given
+        ParkingLot fullParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot();
+        List<ParkingLot> parkingLotList = List.of(fullParkingLot, secondParkingLot);
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLotList);
+        Car parkedCar = new Car();
+        Car newCarToPark = new Car();
+        fullParkingLot.park(parkedCar);
+
+        //when
+        ParkingLotTicket parkingLotTicketForNewCar = standardParkingBoy.park(newCarToPark);
+        //then
+        assertNotNull(parkingLotTicketForNewCar);
+        assertEquals(0,fullParkingLot.getAvailableCapacity());
+        assertEquals(9,secondParkingLot.getAvailableCapacity());
+    }
 
 }

@@ -101,7 +101,7 @@ public class SmartParkingBoyTest {
 
     }
     @Test
-    void should_return_noAvailablePositionException_when_park_given_is_standard_parking_boy_two_full_parking_lots_and_a_car() {
+    void should_return_noAvailablePositionException_when_park_given_is_smart_parking_boy_two_full_parking_lots_and_a_car() {
         //given
         ParkingLot firstParkingLot = new ParkingLot(1);
         ParkingLot secondParkingLot = new ParkingLot(1);

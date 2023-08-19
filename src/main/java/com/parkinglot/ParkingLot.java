@@ -37,7 +37,7 @@ public class ParkingLot {
     }
 
     public Car fetch(ParkingLotTicket parkingLotTicket) {
-        if (ticketCarMap.containsKey(parkingLotTicket)) {
+        if (!ticketCarMap.containsKey(parkingLotTicket)) {
             throw new UnrecognizedParkingTicketException();
         }
 

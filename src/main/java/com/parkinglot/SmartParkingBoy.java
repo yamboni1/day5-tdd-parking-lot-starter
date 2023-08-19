@@ -1,6 +1,7 @@
 package com.parkinglot;
 
 import com.parkinglot.exception.NoAvailablePositionException;
+import com.parkinglot.exception.UnrecognizedParkingTicketException;
 
 import java.util.Comparator;
 import java.util.List;
@@ -18,4 +19,19 @@ public class SmartParkingBoy {
                 .park(car);
 
     }
+
+    public Car fetch(ParkingLotTicket parkingLotTicket) {
+        for(ParkingLot parkingLot : parkingLotList){
+            try{
+                return parkingLot.fetch(parkingLotTicket);
+            }catch (UnrecognizedParkingTicketException ignored){
+                parkingLotList.isEmpty();
+            }
+
+            }
+            throw new UnrecognizedParkingTicketException();
+
+        }
+
+
 }

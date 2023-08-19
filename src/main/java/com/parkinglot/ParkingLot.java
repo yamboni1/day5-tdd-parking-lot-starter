@@ -23,9 +23,7 @@ public class ParkingLot {
         this.ticketCarMap = new HashMap<>();
         capacity = PARKING_LOT_SIZE;
     }
-    public int getTotalCapacity(){
-        return capacity;
-    }
+
 
     private Map<ParkingLotTicket, Car> ticketCarMap = new HashMap<>();
 
@@ -51,7 +49,7 @@ public class ParkingLot {
 
     }
     public double getAvailablePositionRate(){
-        return (double) getAvailableCapacity() /getTotalCapacity();
+        return (double) getAvailableCapacity() /capacity;
     }
 
 

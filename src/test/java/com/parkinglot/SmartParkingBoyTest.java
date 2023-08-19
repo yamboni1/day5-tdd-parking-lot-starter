@@ -122,15 +122,16 @@ public class SmartParkingBoyTest {
     @Test
     void should_park_with_more_empty_position_when_park_given_smart_parking_boy_two_parking_lots_with_available_position_and_a_car() {
     //given
-        ParkingLot firstParkingLot = new ParkingLot(6);
-        ParkingLot secondParkingLot = new ParkingLot(10);
+        ParkingLot firstParkingLot = new ParkingLot(5);
+        ParkingLot secondParkingLot = new ParkingLot();
+        ParkingLot thirdParkingLot = new ParkingLot();
         Car parkedCar = new Car();
         Car parkedCar2 = new Car();
         List<ParkingLot> parkingLotsList = new ArrayList<>();
         parkingLotsList.add(firstParkingLot);
         parkingLotsList.add(secondParkingLot);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotsList);
-         smartParkingBoy.park(parkedCar2);
+        smartParkingBoy.park(parkedCar2);
         //when
             smartParkingBoy.park(parkedCar);
         //then

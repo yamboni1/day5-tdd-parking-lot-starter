@@ -50,7 +50,4 @@ public class ParkingLot {
         return capacity - ticketCarMap.size();
     }
 
-    public boolean hasAvailableCapacity() {
-        return !isParkingLotCapacityFull();
-    }
 }

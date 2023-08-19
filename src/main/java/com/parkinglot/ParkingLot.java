@@ -4,11 +4,14 @@ import com.parkinglot.exception.NoAvailablePositionException;
 import com.parkinglot.exception.UnrecognizedParkingTicketException;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
 public class ParkingLot {
+
     private static final int PARKING_LOT_SIZE = 10;
+    private List<ParkingLot> parkingLotList;
     private final int capacity;
 
     public ParkingLot(int capacity) {
@@ -17,11 +20,14 @@ public class ParkingLot {
     }
 
     public ParkingLot() {
-
+        this.ticketCarMap = new HashMap<>();
         capacity = PARKING_LOT_SIZE;
     }
+    public int getTotalCapacity(){
+        return capacity;
+    }
 
-    private final Map<ParkingLotTicket, Car> ticketCarMap = new HashMap<>();
+    private Map<ParkingLotTicket, Car> ticketCarMap = new HashMap<>();
 
     public ParkingLotTicket park(Car car) {
          if (isParkingLotCapacityFull()) {
@@ -44,13 +50,14 @@ public class ParkingLot {
         return ticketCarMap.remove(parkingLotTicket);
 
     }
+    public double getAvailablePositionRate(){
+        return (double) getAvailableCapacity() /getTotalCapacity();
+    }
+
 
 
     public int getAvailableCapacity() {
         return capacity - ticketCarMap.size();
     }
 
-    public double getAvailablePositionRate() {
-        return (double) ticketCarMap.size() / getAvailableCapacity();
-    }
 }

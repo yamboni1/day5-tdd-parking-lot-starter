@@ -1,5 +1,7 @@
 package com.parkinglot;
 
+import com.parkinglot.exception.UnrecognizedParkingTicketException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -27,20 +29,46 @@ public class SuperParkingBoyTest {
     @Test
     void should_park_to_second_parking_lot_when_park_given_is_super_parking_boy_two_parking_lots_first_parkingLot_is_full_and_a_car() {
         //given
-        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot firstParkingLot = new ParkingLot(2);
         ParkingLot secondParkingLot = new ParkingLot();
-        List<ParkingLot> parkingLotList = List.of(firstParkingLot, secondParkingLot);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotList);
+
+        firstParkingLot.park(new Car());
+        firstParkingLot.park(new Car());
+        SuperParkingBoy superParkingBoy = new SuperParkingBoy(List.of(firstParkingLot, secondParkingLot));
         Car parkedCar = new Car();
-        Car newCarToPark = new Car();
-        firstParkingLot.park(parkedCar);
+
 
         //when
-        ParkingLotTicket parkingLotTicketForNewCar = smartParkingBoy.park(newCarToPark);
+        ParkingLotTicket parkingLotTicket = superParkingBoy.park(parkedCar);
         //then
-        assertNotNull(parkingLotTicketForNewCar);
         assertEquals(0, firstParkingLot.getAvailableCapacity());
         assertEquals(9, secondParkingLot.getAvailableCapacity());
+        assertEquals(parkedCar,secondParkingLot.fetch(parkingLotTicket));
+        
+    }
+    @Test
+    void should_return_the_right_car_when_fetch_given_super_parking_boy_many_parking_lots_all_with_parked_car_parkinglot_ticket() {
+    //given
+        ParkingLot firstParkingLot = new ParkingLot(2);
+        ParkingLot secondParkingLot = new ParkingLot();
+        List<ParkingLot> parkingLotList = List.of(firstParkingLot, secondParkingLot);
+        SuperParkingBoy superParkingBoy = new SuperParkingBoy(parkingLotList);
+        Car parkedCar1 = new Car();
+        Car parkedCar2 = new Car();
+        ParkingLotTicket parkedCar1Ticket = superParkingBoy.park(parkedCar1);
+        ParkingLotTicket parkedCar2Ticket = superParkingBoy.park(parkedCar2);
+        //when
+        Car fetchedCar1 = superParkingBoy.fetch(parkedCar1Ticket);
+        Car fetchedCar2 = superParkingBoy.fetch(parkedCar2Ticket);
+
+
+        //then
+        assertEquals(parkedCar1,fetchedCar1);
+        assertEquals(parkedCar2, fetchedCar2);
     }
 
+
+
 }
+
+

@@ -19,7 +19,7 @@ public class StandardParkingBoy{
             if(parkingLot.getAvailableCapacity() > 0){
                 return parkingLot.park(car);
             }
-        } return null;
+        } throw new NoAvailablePositionException();
 
     }
 

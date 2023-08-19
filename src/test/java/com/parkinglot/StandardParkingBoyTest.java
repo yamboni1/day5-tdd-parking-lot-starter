@@ -15,7 +15,7 @@ public class StandardParkingBoyTest {
         //given
         ParkingLot firstParkingLot = new ParkingLot();
         ParkingLot secondParkingLot = new ParkingLot();
-        List<ParkingLot> parkingLotList = List.of(firstParkingLot);
+        List<ParkingLot> parkingLotList = List.of(firstParkingLot,secondParkingLot);
         StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLotList);
         Car carToBeParked = new Car();
         //when

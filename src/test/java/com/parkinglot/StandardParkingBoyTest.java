@@ -104,7 +104,7 @@ public class StandardParkingBoyTest {
     }
     @Test
     void should_return_noAvailablePositionException_when_park_given_is_standard_parking_boy_two_full_parking_lots_and_a_car() {
-        //given
+    //given
         ParkingLot firstParkingLot = new ParkingLot(1);
         ParkingLot secondParkingLot = new ParkingLot(1);
         List<ParkingLot> parkingLotList = List.of(firstParkingLot, secondParkingLot);
@@ -121,7 +121,6 @@ public class StandardParkingBoyTest {
         assertEquals("No available position.", noAvailablePositionException.getMessage());
 
     }
-
 
 
 }

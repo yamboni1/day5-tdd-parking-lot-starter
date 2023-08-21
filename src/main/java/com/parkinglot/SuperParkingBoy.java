@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class SuperParkingBoy {
-    private List<ParkingLot> parkingLotList;
+    private final List<ParkingLot> parkingLotList;
 
 
     public SuperParkingBoy(List<ParkingLot> parkingLotList) {
@@ -29,7 +29,6 @@ public class SuperParkingBoy {
             try{
                 return parkingLot.fetch(parkingLotTicket);
             }catch (UnrecognizedParkingTicketException ignored){
-                parkingLotList.isEmpty();
             }
 
         }
